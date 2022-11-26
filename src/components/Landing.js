@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import "./Landing.css"
 import axios from 'axios';
+// import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // https://leaguex.s3.ap-south-1.amazonaws.com/task/fantasy-sports/Get_All_Players_of_match.json
 const Landing = () => {
     // const [allPlayers,setAllPlayers] = useState([]);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
-    const [credit,setcredit] = useState(100);
+    const [credit, setcredit] = useState(100);
     const [allBatsman, setAllBatsman] = useState([]);
     const [allBowlers, setAllBowlers] = useState([]);
     const [allRounders, setAllRounders] = useState([]);
@@ -14,6 +16,7 @@ const Landing = () => {
     const [selectedWicketkeepers, setSelectedWicketkeepers] = useState([]);
     const [selectedRounders, setSelectedRounders] = useState([]);
     const [selectedBowlers, setSelectedBowlers] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios.get("https://leaguex.s3.ap-south-1.amazonaws.com/task/fantasy-sports/Get_All_Players_of_match.json").then(response => {
             divide(response.data);
@@ -41,53 +44,75 @@ const Landing = () => {
     const batsmanselect = (data) => {
         // console.log(data)
         //change the state of allbatsmen array.
-        const changeArr = allBatsman.map(obj=>{
-            if(obj.name===data.name){
+        const changeArr = allBatsman.map(obj => {
+            if (obj.name === data.name) {
                 // console.log("matched");
-                return  {...obj, is_playing: true};
+                return { ...obj, is_playing: true };
             }
             return obj;
         })
-        setSelectedBatsman([...selectedBatsman,data])
+        setSelectedBatsman([...selectedBatsman, data])
         setAllBatsman(changeArr)
     }
     const bowlerselect = (data) => {
         // console.log(data)
-        const changeArr = allBowlers.map(obj=>{
-            if(obj.name===data.name){
+        const changeArr = allBowlers.map(obj => {
+            if (obj.name === data.name) {
                 // console.log("matched");
-                return  {...obj, is_playing: true};
+                return { ...obj, is_playing: true };
             }
             return obj;
         })
-        setSelectedBowlers([...selectedBowlers,data])
+        setSelectedBowlers([...selectedBowlers, data])
         setAllBowlers(changeArr)
     }
     const wicketkeeperselect = (data) => {
         // console.log(data)
-        const changeArr = allWicketkeepers.map(obj=>{
-            if(obj.name===data.name){
+        const changeArr = allWicketkeepers.map(obj => {
+            if (obj.name === data.name) {
                 // console.log("matched");
-                return  {...obj, is_playing: true};
+                return { ...obj, is_playing: true };
             }
             return obj;
         })
-        setSelectedWicketkeepers([...selectedWicketkeepers,data])
+        setSelectedWicketkeepers([...selectedWicketkeepers, data])
         setAllWicketkeepers(changeArr)
     }
     const allrounderselect = (data) => {
         // console.log(data)
-        const changeArr = allRounders.map(obj=>{
-            if(obj.name===data.name){
+        const changeArr = allRounders.map(obj => {
+            if (obj.name === data.name) {
                 // console.log("matched");
-                return  {...obj, is_playing: true};
+                return { ...obj, is_playing: true };
             }
             return obj;
         })
-        setSelectedRounders([...selectedRounders,data])
+        setSelectedRounders([...selectedRounders, data])
         setAllRounders(changeArr)
     }
+
     const proceed = () => {
+        if(selectedBatsman<3 || selectedBatsman>7){
+            alert("select 3 to 7 Batsman")
+
+        }
+        if(selectedBowlers< 3 || selectedBowlers>7){
+            alert("select 3 to 7 Bowlers")
+
+        }
+        if(selectedWicketkeepers<1 || selectedWicketkeepers>3){
+            alert("select 1 to 3 Wicketkeepers")
+
+        }
+        if(selectedRounders>4){
+            alert("select 0 to 4 All rounders")
+
+        }
+        setSelectedPlayers(selectedPlayers.concat(selectedBatsman,selectedBowlers,selectedWicketkeepers,selectedRounders))
+        // console.log(selectedPlayers)
+    }
+    const toanotherPage = () =>{
+        navigate("/complete",{state:{selectedPlayers:selectedPlayers}});
     }
 
     return (
@@ -119,7 +144,7 @@ const Landing = () => {
                     <div>
                         <h4>Pick 3-7 Batsman</h4>
                         {allBatsman.map((data, i) => {
-                            return <div key={i} onClick={() => { batsmanselect(data) }} className={`${data.is_playing?"inside-red":"inside"}`}>
+                            return <div key={i} onClick={() => { batsmanselect(data) }} className={`${data.is_playing ? "inside-red" : "inside"}`}>
                                 <p>{data.name}</p>
                                 <div className='credit'>
                                     <h6>Credit</h6>
@@ -127,12 +152,12 @@ const Landing = () => {
                                 </div>
                             </div>
                         })}
-                        
+
                     </div>
                     <div>
                         <h4>Pick 1-5 Wicket Keepers</h4>
                         {allWicketkeepers.map((data, i) => {
-                            return <div key={i} onClick={() => { wicketkeeperselect(data) }} className={`${data.is_playing?"inside-red":"inside"}`}>
+                            return <div key={i} onClick={() => { wicketkeeperselect(data) }} className={`${data.is_playing ? "inside-red" : "inside"}`}>
                                 <p>{data.name}</p>
                                 <div className='credit'>
                                     <h6>Credit</h6>
@@ -140,14 +165,14 @@ const Landing = () => {
                                 </div>
                             </div>
                         })}
-                        
+
                     </div>
                 </div>
                 <div className='hero_inside hero_down'>
                     <div>
                         <h4>Pick 0-4 All Rounders</h4>
                         {allRounders.map((data, i) => {
-                            return <div key={i} onClick={() => { allrounderselect(data) }} className={`${data.is_playing?"inside-red":"inside"}`}>
+                            return <div key={i} onClick={() => { allrounderselect(data) }} className={`${data.is_playing ? "inside-red" : "inside"}`}>
                                 <p>{data.name}</p>
                                 <div className='credit'>
                                     <h6>Credit</h6>
@@ -159,7 +184,7 @@ const Landing = () => {
                     <div>
                         <h4>Pick 3-7 Bowlers</h4>
                         {allBowlers.map((data, i) => {
-                            return <div key={i} onClick={() => { bowlerselect(data) }} className={`${data.is_playing?"inside-red":"inside"}`}>
+                            return <div key={i} onClick={() => { bowlerselect(data) }} className={`${data.is_playing ? "inside-red" : "inside"}`}>
                                 <p>{data.name}</p>
                                 <div className='credit'>
                                     <h6>Credit</h6>
@@ -170,7 +195,7 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <div className='Proceed'>
+            <div className='Proceed' onClick={() => {proceed();toanotherPage();}}>
                 <h2>Proceed</h2>
             </div>
         </div>
