@@ -1,22 +1,24 @@
-.title{
+.title {
     text-align: center;
     font-size: 3rem;
     font-weight: 600;
     margin: 0;
     padding: 18px 0px;
-    color:purple
+    color: purple
 }
-.players_count{
+
+.players_count {
     display: flex;
     width: fit-content;
-    margin-left:auto;
+    margin-left: auto;
     position: absolute;
     z-index: 1;
-    right:20px;
-    top:20px;
+    right: 20px;
+    top: 20px;
 }
-.players_count > div{
-    border:2px solid red;
+
+.players_count>div {
+    border: 2px solid red;
     text-align: center;
     width: 99px;
     height: 80px;
@@ -25,28 +27,34 @@
     justify-content: space-between;
     align-items: center;
 }
-.players_count> div>p{
-    margin:0;
+
+.players_count>div>p {
+    margin: 0;
 }
-.players_count> div>h6{
-    margin:0;
-    font-size:18px;
+
+.players_count>div>h6 {
+    margin: 0;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 20px;
 }
-.players_count> div>p{
+
+.players_count>div>p {
     margin-top: 17px;
 }
+
 /* hero_section */
-.hero_section{
-    margin:30px 50px;
+.hero_section {
+    margin: 30px 50px;
 }
-.hero_inside{
+
+.hero_inside {
     display: flex;
     justify-content: space-between;
 }
-.inside{
-    width:550px;
+
+.inside {
+    width: 550px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -55,8 +63,9 @@
     justify-content: space-between;
     align-items: center;
 }
-.inside-red{
-    width:550px;
+
+.inside-red {
+    width: 550px;
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
@@ -65,32 +74,41 @@
     justify-content: space-between;
     align-items: center;
 }
-.hero_inside > div > h4{
-    margin:0;
+
+.hero_inside>div>h4 {
+    margin: 0;
 }
-.hero_down{
+
+.hero_down {
     margin-top: 30px;
 }
-.credit{
+
+.credit {
     text-align: center;
 }
-.credit>p{
-    margin:0;
+
+.credit>p {
+    margin: 0;
 }
-.credit>h6{
-    margin:0;
+
+.credit>h6 {
+    margin: 0;
 }
+
 /* proceed */
-.Proceed{
+.Proceed {
     padding: 5px;
     text-align: center;
-    margin:0 auto;
-    width:100px;
+    margin: 0 auto;
+    width: 100px;
     height: fit-content;
     border: 2px solid black;
     border-radius: 5px;
+    cursor: pointer
 }
-.Proceed > h2{
-    margin:0;
+
+.Proceed>h2 {
+    margin: 0;
     font-size: 20px;
+    
 }

@@ -53,7 +53,7 @@ const Landing = () => {
     }
     const bowlerselect = (data) => {
         // console.log(data)
-        const changeArr = allBatsman.map(obj=>{
+        const changeArr = allBowlers.map(obj=>{
             if(obj.name===data.name){
                 // console.log("matched");
                 return  {...obj, is_playing: true};
@@ -65,7 +65,7 @@ const Landing = () => {
     }
     const wicketkeeperselect = (data) => {
         // console.log(data)
-        const changeArr = allBatsman.map(obj=>{
+        const changeArr = allWicketkeepers.map(obj=>{
             if(obj.name===data.name){
                 // console.log("matched");
                 return  {...obj, is_playing: true};
@@ -77,7 +77,7 @@ const Landing = () => {
     }
     const allrounderselect = (data) => {
         // console.log(data)
-        const changeArr = allBatsman.map(obj=>{
+        const changeArr = allRounders.map(obj=>{
             if(obj.name===data.name){
                 // console.log("matched");
                 return  {...obj, is_playing: true};
