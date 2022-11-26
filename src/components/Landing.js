@@ -16,13 +16,19 @@ const Landing = () => {
     const [selectedWicketkeepers, setSelectedWicketkeepers] = useState([]);
     const [selectedRounders, setSelectedRounders] = useState([]);
     const [selectedBowlers, setSelectedBowlers] = useState([]);
-    const navigate = useNavigate();
+    // eslint-disable-next-line
+    const navigation = useNavigate();
     useEffect(() => {
         axios.get("https://leaguex.s3.ap-south-1.amazonaws.com/task/fantasy-sports/Get_All_Players_of_match.json").then(response => {
             divide(response.data);
         }).catch(err => { console.log(err); });
+        // eslint-disable-next-line
     }, [])
-
+    useEffect(() => {
+        if(selectedPlayers.length !== 0 ){
+            navigation("/done",{state:{players:selectedPlayers}});
+        }// eslint-disable-next-line
+    },[selectedPlayers])
 
     const divide = (data) => {
         // console.log("<--Inside divide-->",data);
@@ -91,6 +97,7 @@ const Landing = () => {
         setAllRounders(changeArr)
     }
 
+
     const proceed = () => {
         const batlen = selectedBatsman.length;
         const bowlen = selectedBowlers.length;
@@ -114,9 +121,7 @@ const Landing = () => {
         }
         setSelectedPlayers(selectedPlayers.concat(selectedBatsman,selectedBowlers,selectedWicketkeepers,selectedRounders))
         // console.log(selectedPlayers)
-        // navigate("/complete",{state:{players:selectedPlayers,id:26}});
     }
-    console.log(selectedPlayers)
 
     return (
 

@@ -1,0 +1,31 @@
+h2{
+    color:red;
+    margin:0;
+    text-align: center;
+}
+.container{
+    margin: 50px 50px;
+    height: fit-content;
+}
+.player{
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    border: solid 2px black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.player>p{
+    margin:0;
+}
+credit-player{
+    text-align: center
+}
+credit-player>h6{
+    margin:0
+}
+credit-player>p{
+    margin:0;
+}

@@ -2,7 +2,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from './components/Landing';
-import All_selected from "./components/All_selected"
+import Selected from "./components/Selected"
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/complete" element={<All_selected />} />
+          <Route path="/done" element={<Selected />} />
         </Routes>
       </BrowserRouter>
     </div>
