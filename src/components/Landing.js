@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Landing = () => {
     // const [allPlayers,setAllPlayers] = useState([]);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
-    const [credit, setcredit] = useState(100);
+    // const [credit, setcredit] = useState(100);
     const [allBatsman, setAllBatsman] = useState([]);
     const [allBowlers, setAllBowlers] = useState([]);
     const [allRounders, setAllRounders] = useState([]);
@@ -92,28 +92,31 @@ const Landing = () => {
     }
 
     const proceed = () => {
-        if(selectedBatsman<3 || selectedBatsman>7){
+        const batlen = selectedBatsman.length;
+        const bowlen = selectedBowlers.length;
+        const wicketlen = selectedWicketkeepers.length;
+        const roundlen = selectedRounders.length;
+        if(batlen<3 || batlen>7){
             alert("select 3 to 7 Batsman")
 
         }
-        if(selectedBowlers< 3 || selectedBowlers>7){
+        if(bowlen< 3 || bowlen>7){
             alert("select 3 to 7 Bowlers")
 
         }
-        if(selectedWicketkeepers<1 || selectedWicketkeepers>3){
+        if(wicketlen<1 || wicketlen>3){
             alert("select 1 to 3 Wicketkeepers")
 
         }
-        if(selectedRounders>4){
+        if(roundlen>4){
             alert("select 0 to 4 All rounders")
 
         }
         setSelectedPlayers(selectedPlayers.concat(selectedBatsman,selectedBowlers,selectedWicketkeepers,selectedRounders))
         // console.log(selectedPlayers)
+        // navigate("/complete",{state:{players:selectedPlayers,id:26}});
     }
-    const toanotherPage = () =>{
-        navigate("/complete",{state:{selectedPlayers:selectedPlayers}});
-    }
+    console.log(selectedPlayers)
 
     return (
 
@@ -134,7 +137,7 @@ const Landing = () => {
                         <h6>country</h6>
                     </div>
                     <div>
-                        <p>{credit}</p>
+                        <p>100</p>
                         <h6>cr points</h6>
                     </div>
                 </div>
@@ -195,7 +198,7 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
-            <div className='Proceed' onClick={() => {proceed();toanotherPage();}}>
+            <div className='Proceed' onClick={() => {proceed()}}>
                 <h2>Proceed</h2>
             </div>
         </div>

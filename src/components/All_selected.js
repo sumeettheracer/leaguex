@@ -3,7 +3,7 @@ import "./All_Selected.css"
 import { useLocation } from 'react-router-dom';
 const All_selected = () => {
     const state = useLocation();
-    console.log(state.state);
+    console.log(state);
   return (
     <div className='All page'>
         <h2 className=''>
