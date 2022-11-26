@@ -8,6 +8,7 @@ const Landing = () => {
     // const [allPlayers,setAllPlayers] = useState([]);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     // const [credit, setcredit] = useState(100);
+    // const [playerscount,setPlayersCount] = useState(0);
     const [allBatsman, setAllBatsman] = useState([]);
     const [allBowlers, setAllBowlers] = useState([]);
     const [allRounders, setAllRounders] = useState([]);
@@ -50,51 +51,98 @@ const Landing = () => {
     const batsmanselect = (data) => {
         // console.log(data)
         //change the state of allbatsmen array.
-        const changeArr = allBatsman.map(obj => {
-            if (obj.name === data.name) {
-                // console.log("matched");
-                return { ...obj, is_playing: true };
-            }
-            return obj;
-        })
-        setSelectedBatsman([...selectedBatsman, data])
-        setAllBatsman(changeArr)
+        if(data.is_playing === true){
+            // setPlayersCount(prevstate=>prevstate - 1)
+            // setcredit(prevstate=>prevstate+1)
+            const changeArr = allBatsman.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: false };
+                }
+                return obj;
+            })
+            setSelectedBatsman(current => current.filter(player=>player.name !== data.name))
+            setAllBatsman(changeArr);
+        }else{
+            const changeArr = allBatsman.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: true };
+                }
+                return obj;
+            })
+            setSelectedBatsman([...selectedBatsman, data])
+            setAllBatsman(changeArr)
+        }
+        
     }
+    
     const bowlerselect = (data) => {
-        // console.log(data)
-        const changeArr = allBowlers.map(obj => {
-            if (obj.name === data.name) {
-                // console.log("matched");
-                return { ...obj, is_playing: true };
-            }
-            return obj;
-        })
-        setSelectedBowlers([...selectedBowlers, data])
-        setAllBowlers(changeArr)
+        if(data.is_playing === true){
+            // setPlayersCount(prevstate=>prevstate - 1)
+            // setcredit(prevstate=>prevstate+1)
+            const changeArr = allBowlers.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: false };
+                }
+                return obj;
+            })
+            setSelectedBowlers(current => current.filter(player=>player.name !== data.name))
+            setAllBowlers(changeArr);
+        }else{
+            const changeArr = allBowlers.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: true };
+                }
+                return obj;
+            })
+            setSelectedBowlers([...selectedBowlers, data])
+            setAllBowlers(changeArr)
+        }
     }
     const wicketkeeperselect = (data) => {
-        // console.log(data)
-        const changeArr = allWicketkeepers.map(obj => {
-            if (obj.name === data.name) {
-                // console.log("matched");
-                return { ...obj, is_playing: true };
-            }
-            return obj;
-        })
-        setSelectedWicketkeepers([...selectedWicketkeepers, data])
-        setAllWicketkeepers(changeArr)
+        if(data.is_playing === true){
+            // setPlayersCount(prevstate=>prevstate - 1)
+            // setcredit(prevstate=>prevstate+1)
+            const changeArr = allWicketkeepers.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: false };
+                }
+                return obj;
+            })
+            setSelectedWicketkeepers(current => current.filter(player=>player.name !== data.name))
+            setAllWicketkeepers(changeArr);
+        }else{
+            const changeArr = allWicketkeepers.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: true };
+                }
+                return obj;
+            })
+            setSelectedWicketkeepers([...selectedWicketkeepers, data])
+            setAllWicketkeepers(changeArr)
+        }
     }
     const allrounderselect = (data) => {
-        // console.log(data)
-        const changeArr = allRounders.map(obj => {
-            if (obj.name === data.name) {
-                // console.log("matched");
-                return { ...obj, is_playing: true };
-            }
-            return obj;
-        })
-        setSelectedRounders([...selectedRounders, data])
-        setAllRounders(changeArr)
+        if(data.is_playing === true){
+            // setPlayersCount(prevstate=>prevstate - 1)
+            // setcredit(prevstate=>prevstate+1)
+            const changeArr = allRounders.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: false };
+                }
+                return obj;
+            })
+            setSelectedRounders(current => current.filter(player=>player.name !== data.name))
+            setAllRounders(changeArr);
+        }else{
+            const changeArr = allRounders.map(obj => {
+                if (obj.name === data.name) {
+                    return { ...obj, is_playing: true };
+                }
+                return obj;
+            })
+            setSelectedRounders([...selectedRounders, data])
+            setAllRounders(changeArr)
+        }
     }
 
 
